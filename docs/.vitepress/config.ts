@@ -63,11 +63,18 @@ export default defineConfig({
         ]
       },
       {
-        text: '第二期预告',
+        text: '🏥 就医问诊',
         items: [
-          { text: '🏥 就医问诊', link: '/medical/' },
-          { text: '🛒 购物防骗', link: '/shopping/' }
+          { text: '总览', link: '/medical/' },
+          { text: '挂号全流程', link: '/medical/registration' },
+          { text: '医保怎么用', link: '/medical/medical-insurance' },
+          { text: '常见小病怎么处理', link: '/medical/common-ailments' },
+          { text: '体检', link: '/medical/health-checkup' }
         ]
+      },
+      {
+        text: '第二期预告',
+        items: [{ text: '🛒 购物防骗', link: '/shopping/' }]
       },
       {
         text: '关于',
