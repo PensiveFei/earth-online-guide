@@ -4,7 +4,7 @@
 
 **在线阅读：https://pensivefei.github.io/earth-online-guide/**
 
-🚧 项目早期阶段：站点骨架已就绪，内容正在撰写中。
+🚧 项目持续更新中——欢迎提交 PR，补充攻略、修正错误、增加新任务。
 
 ## 这是什么
 
