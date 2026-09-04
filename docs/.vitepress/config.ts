@@ -85,7 +85,6 @@ export default defineConfig({
       {
         text: '关于',
         items: [
-          { text: '📝 文章模板', link: '/template' },
           { text: '🤝 投稿与协作', link: '/contributing' },
           { text: '⚠️ 免责声明', link: '/disclaimer' }
         ]
