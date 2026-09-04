@@ -11,5 +11,4 @@
   <ArticleCard link="/travel/packing-list" title="出行打包清单" desc="出发前逐项核对" />
   <ArticleCard link="/travel/lost-documents" title="证件丢了怎么办" desc="身份证、护照、银行卡、手机的挂失与补办" />
   <ArticleCard link="/travel/anti-scam" title="旅途防骗" desc="车站、机场、景区的常见套路" />
-  <ArticleCard link="/travel/shared-bike" title="骑共享单车" desc="扫码解锁、检查车况、规范还车" />
 </Cards>
