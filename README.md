@@ -25,14 +25,6 @@
 
 做饭板块刻意做「精简版」——追求进阶菜谱请移步 [HowToCook](https://github.com/Anduin2017/HowToCook)（102k★，我们致敬的同类前辈）。
 
-## 进度
-
-- [x] 阶段 0：建仓 · 许可证（CC BY-SA 4.0）· 协作者邀请
-- [x] 阶段 1：VitePress 站点 · Pages 自动部署 · 免责声明
-- [ ] 阶段 2：内容 MVP（做饭 + 出行，约 20–30 篇）
-- [ ] 阶段 3：发布 v0.1.0
-- [ ] 阶段 4：推广与迭代
-
 ## 参与
 
 - 投稿与协作方式见 [contributing](https://pensivefei.github.io/earth-online-guide/contributing)
