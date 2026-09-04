@@ -24,7 +24,19 @@ export default defineConfig({
       },
       {
         text: '🚄 出行交通',
-        items: [{ text: '总览', link: '/travel/' }]
+        items: [
+          { text: '总览', link: '/travel/' },
+          { text: '坐高铁全流程', link: '/travel/high-speed-rail' },
+          { text: '坐飞机全流程', link: '/travel/flight' },
+          { text: '买票 · 改签 · 退票', link: '/travel/tickets' },
+          { text: '坐地铁', link: '/travel/metro' },
+          { text: '坐公交', link: '/travel/bus' },
+          { text: '打车', link: '/travel/taxi' },
+          { text: '住酒店', link: '/travel/hotel' },
+          { text: '出行打包清单', link: '/travel/packing-list' },
+          { text: '证件丢了怎么办', link: '/travel/lost-documents' },
+          { text: '旅途防骗', link: '/travel/anti-scam' }
+        ]
       },
       {
         text: '第二期预告',
