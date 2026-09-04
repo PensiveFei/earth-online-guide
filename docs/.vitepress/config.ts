@@ -51,9 +51,20 @@ export default defineConfig({
         ]
       },
       {
+        text: '🏠 租房搬家',
+        items: [
+          { text: '总览', link: '/renting/' },
+          { text: '找房渠道', link: '/renting/finding-a-place' },
+          { text: '看房清单', link: '/renting/viewing-checklist' },
+          { text: '合同避坑', link: '/renting/contract-pitfalls' },
+          { text: '押金与退租', link: '/renting/deposit-moveout' },
+          { text: '搬家流程', link: '/renting/moving-process' },
+          { text: '合租注意事项', link: '/renting/shared-housing' }
+        ]
+      },
+      {
         text: '第二期预告',
         items: [
-          { text: '🏠 租房搬家', link: '/renting/' },
           { text: '🏥 就医问诊', link: '/medical/' },
           { text: '🛒 购物防骗', link: '/shopping/' }
         ]

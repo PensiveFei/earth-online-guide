@@ -1,5 +1,10 @@
 # 🏠 租房搬家
 
-> 第二期开放。计划篇目：找房渠道、看房清单、合同避坑、押金与退租、搬家流程、合租注意事项。
+## 篇目
 
-🚧 敬请期待——先完成饮食做饭与出行交通两章。
+- [找房渠道](./finding-a-place)
+- [看房清单](./viewing-checklist)
+- [合同避坑](./contract-pitfalls)
+- [押金与退租](./deposit-moveout)
+- [搬家流程](./moving-process)
+- [合租注意事项](./shared-housing)
