@@ -10,7 +10,7 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: '新手指南', link: '/' },
-      { text: '主线任务', link: '/cooking/' },
+      { text: '内容板块', link: '/cooking/' },
       { text: '投稿与协作', link: '/contributing' }
     ],
     sidebar: [
@@ -19,15 +19,15 @@ export default defineConfig({
         items: [{ text: '欢迎来到地球Online', link: '/' }]
       },
       {
-        text: '🍚 主线任务一 · 喂饱自己',
+        text: '🍚 饮食做饭',
         items: [{ text: '总览', link: '/cooking/' }]
       },
       {
-        text: '🚄 主线任务二 · 出门走走',
+        text: '🚄 出行交通',
         items: [{ text: '总览', link: '/travel/' }]
       },
       {
-        text: '支线任务 · 第二期预告',
+        text: '第二期预告',
         items: [
           { text: '🏠 租房搬家', link: '/renting/' },
           { text: '🏥 就医问诊', link: '/medical/' },
