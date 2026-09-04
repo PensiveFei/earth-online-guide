@@ -20,7 +20,19 @@ export default defineConfig({
       },
       {
         text: '🍚 饮食做饭',
-        items: [{ text: '总览', link: '/cooking/' }]
+        items: [
+          { text: '总览', link: '/cooking/' },
+          { text: '蒸米饭', link: '/cooking/steam-rice' },
+          { text: '煮面条', link: '/cooking/noodles' },
+          { text: '煎鸡蛋', link: '/cooking/fried-egg' },
+          { text: '蒸蛋羹', link: '/cooking/steamed-egg-custard' },
+          { text: '煮速冻水饺', link: '/cooking/frozen-dumplings' },
+          { text: '炒青菜', link: '/cooking/stir-fried-greens' },
+          { text: '煮粥', link: '/cooking/congee' },
+          { text: '炖一锅汤', link: '/cooking/soup' },
+          { text: '切菜基础', link: '/cooking/knife-skills' },
+          { text: '厨房安全：燃气与用电', link: '/cooking/kitchen-safety' }
+        ]
       },
       {
         text: '🚄 出行交通',

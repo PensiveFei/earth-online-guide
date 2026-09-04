@@ -8,8 +8,8 @@
 
 ## 快速开始
 
-- 🍚 饮食做饭：从[蒸米饭](/cooking/)开始
-- 🚄 出行交通：从[坐高铁](/travel/)开始
+- 🍚 饮食做饭：从[蒸米饭](/cooking/steam-rice)开始
+- 🚄 出行交通：从[坐高铁](/travel/high-speed-rail)开始
 - 📝 想一起写？看[投稿与协作](/contributing)和[文章模板](/template)
 
 ## 三条铁律
