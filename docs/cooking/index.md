@@ -11,4 +11,5 @@
   <ArticleCard link="/cooking/soup" title="炖一锅汤" desc="焯水、慢炖、加盐的时机" />
   <ArticleCard link="/cooking/knife-skills" title="切菜基础" desc="猫爪手与基本刀法" />
   <ArticleCard link="/cooking/kitchen-safety" title="厨房安全：燃气与用电" desc="燃气泄漏、微波炉与用电注意" />
+  <ArticleCard link="/cooking/food-storage" title="食物保存与变质处理" desc="冰箱温度、剩菜时限与变质判断" />
 </Cards>

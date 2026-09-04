@@ -7,4 +7,5 @@
   <ArticleCard link="/renting/deposit-moveout" title="押金与退租" desc="入住留证、退租流程、维权" />
   <ArticleCard link="/renting/moving-process" title="搬家流程" desc="打包搬运与搬后交接" />
   <ArticleCard link="/renting/shared-housing" title="合租注意事项" desc="费用分摊与公区规则" />
+  <ArticleCard link="/renting/utility-meters" title="看电表水表 · 核对水电费" desc="抄底数尾数、按差价缴费" />
 </Cards>

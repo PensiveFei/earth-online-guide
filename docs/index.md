@@ -39,6 +39,11 @@ features:
     details: 网购避坑、二手交易、电信诈骗识别、维权渠道
     link: /shopping/
     linkText: 进入板块
+  - icon: 🧺
+    title: 日常家务
+    details: 洗衣、拖地、清洗家电、换锁疏通……居家小事不求人
+    link: /housework/
+    linkText: 进入板块
 ---
 
 ## 三条铁律

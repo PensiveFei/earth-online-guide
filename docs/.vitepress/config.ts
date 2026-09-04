@@ -17,7 +17,8 @@ export default defineConfig({
           { text: '🚄 出行交通', link: '/travel/' },
           { text: '🏠 租房搬家', link: '/renting/' },
           { text: '🏥 就医问诊', link: '/medical/' },
-          { text: '🛒 购物防骗', link: '/shopping/' }
+          { text: '🛒 购物防骗', link: '/shopping/' },
+          { text: '🧺 日常家务', link: '/housework/' }
         ]
       },
       { text: '投稿与协作', link: '/contributing' },
