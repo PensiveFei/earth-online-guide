@@ -1,0 +1,36 @@
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 12px;
+  margin: 16px 0 24px;
+}
+
+.article-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  background: var(--vp-c-bg-soft);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.2s;
+}
+
+.article-card:hover {
+  border-color: var(--vp-c-brand-1);
+  text-decoration: none;
+}
+
+.article-card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+}
+
+.article-card-desc {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--vp-c-text-2);
+}
