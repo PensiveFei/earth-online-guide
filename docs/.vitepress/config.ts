@@ -73,8 +73,14 @@ export default defineConfig({
         ]
       },
       {
-        text: '第二期预告',
-        items: [{ text: '🛒 购物防骗', link: '/shopping/' }]
+        text: '🛒 购物防骗',
+        items: [
+          { text: '总览', link: '/shopping/' },
+          { text: '网购避坑', link: '/shopping/online-shopping' },
+          { text: '二手交易', link: '/shopping/second-hand' },
+          { text: '电信诈骗识别', link: '/shopping/telecom-scams' },
+          { text: '维权渠道', link: '/shopping/rights-protection' }
+        ]
       },
       {
         text: '关于',
