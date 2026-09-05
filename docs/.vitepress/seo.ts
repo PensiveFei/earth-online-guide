@@ -26,11 +26,14 @@ const SECTION_DESC: Record<string, string> = {
   housework: '洗衣、拖地、清洗家电、换锁疏通……居家小事不求人'
 }
 
-// 已绘制 OG 封面的板块；其余板块与杂页回退到首页封面
+// 各板块的 OG 封面；杂页（投稿/免责声明等）回退到首页封面
 const SECTION_OG: Record<string, string> = {
   cooking: 'og/cooking.jpg',
   travel: 'og/travel.jpg',
-  renting: 'og/renting.jpg'
+  renting: 'og/renting.jpg',
+  medical: 'og/medical.jpg',
+  shopping: 'og/shopping.jpg',
+  housework: 'og/housework.jpg'
 }
 
 const docsRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
