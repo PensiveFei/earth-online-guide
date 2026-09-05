@@ -3,8 +3,8 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import type { HeadConfig, PageData } from 'vitepress'
 
-export const SITE_URL = 'https://pensivefei.github.io'
-export const BASE = '/earth-online-guide/'
+export const SITE_URL = 'https://eartholguide.com'
+export const BASE = '/'
 export const SITE_NAME = '地球Online指南'
 export const SITE_DESC = '从蒸米饭到坐高铁——写给「第一次」的全场景生活技能手册'
 

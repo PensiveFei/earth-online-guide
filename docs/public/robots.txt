@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pensivefei.github.io/earth-online-guide/sitemap.xml
+Sitemap: https://eartholguide.com/sitemap.xml
