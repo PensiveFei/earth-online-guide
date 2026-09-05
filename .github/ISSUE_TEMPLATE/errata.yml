@@ -1,0 +1,46 @@
+name: 勘误提交
+description: 发现错别字、事实错误或过期信息？花一分钟告诉我们
+title: "[勘误] "
+labels: ["勘误"]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: 页面链接
+      description: 出错页面的网址，浏览器地址栏复制即可
+      placeholder: https://pensivefei.github.io/earth-online-guide/...
+    validations:
+      required: true
+
+  - type: textarea
+    id: wrong
+    attributes:
+      label: 错误内容
+      description: 原文是怎么写的？直接复制粘贴原文片段
+      placeholder: 原文：……
+    validations:
+      required: true
+
+  - type: textarea
+    id: correct
+    attributes:
+      label: 正确信息
+      description: 应该是什么？有官方依据更好
+      placeholder: 应为：……
+    validations:
+      required: true
+
+  - type: input
+    id: source
+    attributes:
+      label: 参考来源（选填）
+      description: 官方链接或其他依据
+      placeholder: https://...
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        感谢勘误！维护者核实后会尽快修正。🙏
