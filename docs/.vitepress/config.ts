@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
-import { BASE, SITE_NAME, SITE_URL, transformHead, transformPageData } from './seo'
+import { BASE, SITE_NAME, SITE_URL, transformHead, transformPageData as seoTransformPageData } from './seo'
 import { buildSidebar } from './sidebar'
+import { buildRssFeed, collectRssPage } from './rss'
 
 const REPO = 'https://github.com/PensiveFei/earth-online-guide'
 
@@ -39,12 +40,19 @@ export default defineConfig({
     ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: BASE + 'favicon-32x32.png' }],
     ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: BASE + 'favicon-16x16.png' }],
     ['link', { rel: 'apple-touch-icon', href: BASE + 'apple-touch-icon.png' }],
+    ['link', { rel: 'alternate', type: 'application/rss+xml', title: SITE_NAME + ' RSS', href: BASE + 'feed.xml' }],
     ['meta', { name: 'theme-color', content: '#2e5d43' }]
   ],
 
-  // 问题 3 / 5 / 6 / 7：见 seo.ts
-  transformPageData,
+  // 问题 3 / 5 / 6 / 7：见 seo.ts；先跑 SEO 变换再收集 RSS 数据
+  transformPageData(pageData, ctx) {
+    seoTransformPageData(pageData, ctx)
+    collectRssPage(pageData)
+  },
   transformHead,
+
+  // RSS 订阅源：构建结束后生成 feed.xml
+  buildEnd: buildRssFeed,
 
   themeConfig: {
     nav: [
@@ -68,7 +76,16 @@ export default defineConfig({
     sidebar: buildSidebar(),
 
     // 问题 11：仓库入口（导航栏 GitHub 图标）
-    socialLinks: [{ icon: 'github', link: REPO }],
+    socialLinks: [
+      { icon: 'github', link: REPO },
+      {
+        icon: {
+          svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#FF9800" d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20 5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1Z"/></svg>'
+        },
+        link: BASE + 'feed.xml',
+        ariaLabel: 'RSS 订阅'
+      }
+    ],
 
     // 问题 12：编辑此页
     editLink: {
