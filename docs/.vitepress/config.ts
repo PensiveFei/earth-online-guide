@@ -41,7 +41,9 @@ export default defineConfig({
     ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: BASE + 'favicon-16x16.png' }],
     ['link', { rel: 'apple-touch-icon', href: BASE + 'apple-touch-icon.png' }],
     ['link', { rel: 'alternate', type: 'application/rss+xml', title: SITE_NAME + ' RSS', href: BASE + 'feed.xml' }],
-    ['meta', { name: 'theme-color', content: '#2e5d43' }]
+    ['meta', { name: 'theme-color', content: '#2e5d43' }],
+    // Google Search Console 站点验证
+    ['meta', { name: 'google-site-verification', content: 'FoS0aZ6lkp4zAgsePPSyHBtu2UV45lDd_hFtr8_Imrc' }]
   ],
 
   // 问题 3 / 5 / 6 / 7：见 seo.ts；先跑 SEO 变换再收集 RSS 数据
