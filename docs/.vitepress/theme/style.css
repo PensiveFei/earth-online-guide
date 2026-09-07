@@ -254,18 +254,20 @@
   }
 }
 
-/* ========== 圆形扩散主题切换 ========== */
-.theme-reveal-overlay {
-  position: fixed;
-  border-radius: 50%;
-  transform: scale(0);
-  transform-origin: center;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
-  pointer-events: none;
-  z-index: 9999;
+/* ========== 圆形扩散主题切换（View Transitions） ========== */
+/* 关闭默认交叉淡入，改用圆形揭开：圆内是新主题、圆外是旧主题 */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
 
-.theme-reveal-overlay.is-revealing {
-  transform: scale(1);
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 2;
+  /* 初始裁成点击处的一个点，随后由 JS 动画扩成整圆 */
+  clip-path: circle(0px at var(--vt-x, 50%) var(--vt-y, 50%));
 }

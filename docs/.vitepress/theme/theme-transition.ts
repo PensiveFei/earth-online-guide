@@ -1,11 +1,6 @@
-// 圆形扩散主题切换：点击主题按钮后，新主题背景以圆形从点击处向外扩散，
-// 覆盖全屏后再真正切换主题（isDark.value），避免整屏瞬间变色。
+// 圆形扩散主题切换（View Transitions API）：
+// 新主题以圆形从点击处向外「揭开」，圆内是新主题、圆外仍是旧主题，内容全程可见。
 
-// VitePress 默认页面背景色（本项目未自定义 --vp-c-bg，故与默认一致）
-const DARK_BG = '#1b1b1f'
-const LIGHT_BG = '#ffffff'
-
-// 与 style.css 中 .theme-reveal-overlay 的 transition 时长保持一致
 const DURATION = 600
 
 let animating = false
@@ -21,8 +16,10 @@ export function revealTheme(
     return
   }
 
-  // 用户偏好「减少动态效果」时，直接切换
-  if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
+  const startVT = (document as any).startViewTransition
+
+  // 不支持 View Transitions，或用户偏好减少动效：直接切换（回退到 VitePress 默认行为）
+  if (typeof startVT !== 'function' || window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
     apply()
     return
   }
@@ -31,40 +28,42 @@ export function revealTheme(
   if (animating) return
   animating = true
 
-  // 半径：覆盖到距离点击处最远的屏幕角落，再加一点余量
-  const radius =
-    Math.hypot(
-      Math.max(x, window.innerWidth - x),
-      Math.max(y, window.innerHeight - y)
-    ) + 8
+  // 半径：覆盖到距离点击处最远的屏幕角落
+  const radius = Math.hypot(
+    Math.max(x, window.innerWidth - x),
+    Math.max(y, window.innerHeight - y)
+  )
 
-  const overlay = document.createElement('div')
-  overlay.className = 'theme-reveal-overlay'
-  overlay.style.background = targetDark ? DARK_BG : LIGHT_BG
-  // 用像素直接定位圆形，使其圆心正好落在点击处
-  overlay.style.left = `${x - radius}px`
-  overlay.style.top = `${y - radius}px`
-  overlay.style.width = `${radius * 2}px`
-  overlay.style.height = `${radius * 2}px`
+  // 把「揭开」圆心写入 CSS 变量，供 ::view-transition-new(root) 使用
+  const root = document.documentElement
+  root.style.setProperty('--vt-x', `${x}px`)
+  root.style.setProperty('--vt-y', `${y}px`)
 
-  document.body.appendChild(overlay)
-
-  // 强制重排，确保初始 scale(0)（不可见）已渲染，再触发扩散过渡
-  void overlay.offsetWidth
-  overlay.classList.add('is-revealing')
-
-  let finished = false
-  const finish = () => {
-    if (finished) return
-    finished = true
-    animating = false
+  const transition = startVT.call(document, () => {
+    // 同步切换 html.dark，确保 View Transition 能捕获到新主题快照
+    root.classList.toggle('dark', targetDark)
+    // 同步 Vue 响应式状态与 localStorage（按钮图标、持久化）
     apply()
-    overlay.remove()
-  }
-
-  overlay.addEventListener('transitionend', (e) => {
-    if (e.propertyName === 'transform') finish()
   })
-  // 兜底：transitionend 因故未触发时也能完成切换
-  setTimeout(finish, DURATION + 150)
+
+  transition.ready.then(() => {
+    // 让新主题从点击处的一个点，扩成覆盖全屏的圆
+    document.documentElement.animate(
+      {
+        clipPath: [
+          `circle(0px at ${x}px ${y}px)`,
+          `circle(${radius}px at ${x}px ${y}px)`
+        ]
+      },
+      {
+        duration: DURATION,
+        easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+        pseudoElement: '::view-transition-new(root)'
+      }
+    )
+  })
+
+  transition.finished.finally(() => {
+    animating = false
+  })
 }
