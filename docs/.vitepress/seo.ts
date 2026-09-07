@@ -267,6 +267,10 @@ export function transformHead({ pageData }: { pageData: PageData }): HeadConfig[
   const desc = resolveDescription(pageData)
   const title = isHome ? SITE_NAME : `${pageData.title} | ${SITE_NAME}`
   const image = ogImageFor(rel)
+  // og/home.jpg 为 2560×1440，其余板块 og 图均为 1024×541
+  const isHomeOg = image.endsWith('/og/home.jpg')
+  const ogWidth = isHomeOg ? '2560' : '1024'
+  const ogHeight = isHomeOg ? '1440' : '541'
 
   const head: HeadConfig[] = [
     ['link', { rel: 'canonical', href: url }],
@@ -275,8 +279,8 @@ export function transformHead({ pageData }: { pageData: PageData }): HeadConfig[
     ['meta', { property: 'og:description', content: desc }],
     ['meta', { property: 'og:url', content: url }],
     ['meta', { property: 'og:image', content: image }],
-    ['meta', { property: 'og:image:width', content: '1024' }],
-    ['meta', { property: 'og:image:height', content: '541' }],
+    ['meta', { property: 'og:image:width', content: ogWidth }],
+    ['meta', { property: 'og:image:height', content: ogHeight }],
     ['meta', { property: 'og:locale', content: 'zh_CN' }],
     ['meta', { property: 'og:site_name', content: SITE_NAME }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
