@@ -31,28 +31,27 @@ export function revealTheme(
   if (animating) return
   animating = true
 
-  const overlay = document.createElement('div')
-  overlay.className = 'theme-reveal-overlay'
-  overlay.style.setProperty('--reveal-x', `${x}px`)
-  overlay.style.setProperty('--reveal-y', `${y}px`)
-  overlay.style.background = targetDark ? DARK_BG : LIGHT_BG
-
-  // 覆盖到距离点击处最远的屏幕角落，再加一点余量
+  // 半径：覆盖到距离点击处最远的屏幕角落，再加一点余量
   const radius =
     Math.hypot(
       Math.max(x, window.innerWidth - x),
       Math.max(y, window.innerHeight - y)
-    ) + 2
-  overlay.style.setProperty('--reveal-r', `${radius}px`)
+    ) + 8
+
+  const overlay = document.createElement('div')
+  overlay.className = 'theme-reveal-overlay'
+  overlay.style.background = targetDark ? DARK_BG : LIGHT_BG
+  // 用像素直接定位圆形，使其圆心正好落在点击处
+  overlay.style.left = `${x - radius}px`
+  overlay.style.top = `${y - radius}px`
+  overlay.style.width = `${radius * 2}px`
+  overlay.style.height = `${radius * 2}px`
 
   document.body.appendChild(overlay)
 
-  // 双 rAF：确保初始 0 半径已渲染，再触发扩散过渡
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      overlay.classList.add('is-revealing')
-    })
-  })
+  // 强制重排，确保初始 scale(0)（不可见）已渲染，再触发扩散过渡
+  void overlay.offsetWidth
+  overlay.classList.add('is-revealing')
 
   let finished = false
   const finish = () => {
@@ -64,8 +63,8 @@ export function revealTheme(
   }
 
   overlay.addEventListener('transitionend', (e) => {
-    if (e.propertyName === 'clip-path') finish()
+    if (e.propertyName === 'transform') finish()
   })
   // 兜底：transitionend 因故未触发时也能完成切换
-  setTimeout(finish, DURATION + 120)
+  setTimeout(finish, DURATION + 150)
 }
