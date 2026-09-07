@@ -253,3 +253,18 @@
     max-width: 520px;
   }
 }
+
+/* ========== 圆形扩散主题切换 ========== */
+.theme-reveal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  clip-path: circle(0px at var(--reveal-x) var(--reveal-y));
+  transition: clip-path 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: clip-path;
+}
+
+.theme-reveal-overlay.is-revealing {
+  clip-path: circle(var(--reveal-r) at var(--reveal-x) var(--reveal-y));
+}
