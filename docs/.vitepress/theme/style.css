@@ -1,31 +1,72 @@
+/* ========== 基础：内联图标（覆盖 vitepress base.css 的 svg{display:block}） ========== */
+.app-icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* 卡片整体不显示链接下划线（覆盖 vp-doc 的 a{text-decoration:underline}） */
+.vp-doc .article-card,
+.vp-doc .home-feature-card {
+  text-decoration: none;
+}
+
+/* ========== 板块目录卡片 ========== */
 .article-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 12px;
-  margin: 16px 0 24px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin: 20px 0 24px;
+}
+
+@media (max-width: 640px) {
+  .article-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .article-card {
   display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 16px;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 20px;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 10px;
-  background: var(--vp-c-bg-soft);
+  border-radius: 12px;
+  background: var(--vp-c-bg);
   color: inherit;
   text-decoration: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .article-card:hover {
   border-color: var(--vp-c-brand-1);
+  box-shadow: 0 4px 16px rgba(52, 81, 178, 0.10);
   text-decoration: none;
+}
+
+.article-card-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  color: var(--vp-c-brand-1);
+  margin-top: 2px;
+}
+
+.article-card-icon .app-icon {
+  width: 100%;
+  height: 100%;
+}
+
+.article-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
 }
 
 .article-card-title {
   font-size: 15px;
   font-weight: 600;
+  line-height: 1.4;
   color: var(--vp-c-text-1);
 }
 
@@ -33,4 +74,182 @@
   font-size: 13px;
   line-height: 1.5;
   color: var(--vp-c-text-2);
+}
+
+.article-card-linktext {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--vp-c-brand-1);
+}
+
+.article-card-arrow {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+}
+
+/* ========== 板块标题图标（H1 内联） ========== */
+.vp-doc h1 .app-icon {
+  width: 1.05em;
+  height: 1.05em;
+  vertical-align: -0.14em;
+  margin-right: 0.28em;
+  color: var(--vp-c-brand-1);
+}
+
+/* ========== 板块目录页看板娘 ========== */
+.section-mascot {
+  display: none;
+}
+
+@media (min-width: 1440px) {
+  /* 目录页内容区加宽（覆盖 .VPDoc.has-aside .content-container 的 688px 限制） */
+  .VPDoc.has-aside:has(.section-mascot) .content-container {
+    max-width: 1200px;
+    width: 100%;
+  }
+
+  .vp-doc:has(.section-mascot) {
+    position: relative;
+  }
+
+  .vp-doc:has(.section-mascot) .article-grid {
+    max-width: calc(100% - 260px);
+  }
+
+  .section-mascot {
+    display: block;
+    position: absolute;
+    top: 72px;
+    right: 0;
+    width: 240px;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+  }
+}
+
+@media (min-width: 1920px) {
+  .vp-doc:has(.section-mascot) .article-grid {
+    max-width: calc(100% - 400px);
+  }
+
+  .section-mascot {
+    width: 380px;
+  }
+}
+
+/* ========== 首页板块卡片 ========== */
+.home-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin: 32px auto;
+  max-width: 1152px;
+  padding: 0 24px;
+}
+
+@media (max-width: 960px) {
+  .home-features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .home-features {
+    grid-template-columns: 1fr;
+  }
+}
+
+.home-feature-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 14px;
+  background: var(--vp-c-bg);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.home-feature-card:hover {
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 8px 24px rgba(52, 81, 178, 0.12);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.home-feature-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.home-feature-icon {
+  width: 34px;
+  height: 34px;
+  color: var(--vp-c-brand-1);
+  flex-shrink: 0;
+}
+
+.home-feature-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+}
+
+.home-feature-desc {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--vp-c-text-2);
+}
+
+.home-feature-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 6px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--vp-c-brand-1);
+}
+
+.home-feature-arrow {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+}
+
+/* ========== 首页 hero 插画 ========== */
+.VPHero .image-bg {
+  display: none;
+}
+
+.VPHero .image-container {
+  transform: none;
+}
+
+.VPHero .image-container .image-src {
+  width: min(460px, 100%);
+  height: auto;
+  max-width: 100%;
+  max-height: none;
+  object-fit: contain;
+}
+
+@media (min-width: 960px) {
+  .VPHero .image {
+    min-width: 480px;
+  }
+
+  .VPHero .image-container .image-src {
+    width: 520px;
+    max-width: 520px;
+  }
 }
