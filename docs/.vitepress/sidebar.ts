@@ -32,7 +32,8 @@ function parseCards(section: string): DefaultTheme.SidebarItem[] {
 
 function sectionEmojiTitle(section: string, fallback: string): string {
   const md = fs.readFileSync(path.join(docsRoot, section, 'index.md'), 'utf8')
-  return /^#\s+(.+)$/m.exec(md)?.[1]?.trim() || fallback
+  const raw = /^#\s+(.+)$/m.exec(md)?.[1]?.trim()
+  return raw?.replace(/<[^>]+>/g, '').trim() || fallback
 }
 
 export function buildSidebar(): DefaultTheme.Sidebar {
